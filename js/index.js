@@ -13,7 +13,6 @@ BOTON.addEventListener ("click", function()
  });
 
 
-console.log (MAIL);
 
 
 

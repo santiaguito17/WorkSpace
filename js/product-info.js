@@ -2,12 +2,16 @@
 
 const CONTENDEDOR = document.getElementById ("contenedor");
 
+const RELACIONADOS = document.getElementById("relacionados");
+
+
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
       if (resultObj.status === "ok") {
        let productos = resultObj.data;
   
        mostrarProducto (productos);
+       relacionados(productos.relatedProducts);
 
       }
     });
@@ -25,8 +29,39 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
   });
 
-  const mostrarProducto = (obj) => {
-    CONTENDEDOR.innerHTML += `
+function relacionados (array) {
+  array.forEach ((element) => {
+    RELACIONADOS.innerHTML +=
+
+  `
+  <div class="col-md-3">
+  <div
+      class="card mb-3 shadow-sm custom-card cursor-active"
+      id="sofa"
+      onclick="guardarIdProducto(${element.id})"
+  >
+     <img
+        class="bd-placeholder-img card-img-top p-2 border-bottom"        src="${element.image}"
+        alt="Imgagen representativa de producto relacionado"         />
+      <div class="card-body">
+        <h4 class="card-title mb-2">${element.name}</h4>
+  </div>
+</div>
+  </div>
+  `
+;
+});
+}
+
+function guardarIdProducto(id) {
+  localStorage.setItem ("IdProducto", id);
+
+  window.location.reload ();
+  
+}
+
+  function mostrarProducto(obj) {
+  CONTENDEDOR.innerHTML += `
     <h2> ${obj.name} </h2>
     <hr>
     <div>
@@ -48,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     </ul>
   
     `;
-  };
+}
 
   const conseguirImagenes = (array) => {
     let res = "";

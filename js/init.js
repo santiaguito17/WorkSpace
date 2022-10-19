@@ -14,7 +14,7 @@ const PRODUCT_INFO_URL = "https://japceibal.github.io/emercado-api/products/" + 
 
 const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/"+ traerIdProducto() + ".json";
 
-const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
+const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
 
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 

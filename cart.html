@@ -57,10 +57,93 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <h2 class="text-center" m-4>Carrito de compras</h2>
+      <h4 class="m-4">Articulos a comprar</h4>
+
+      <table  class="table mb-5" >
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Costo</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Subtotal</th>
+  </tr>
+</thead>
+
+<tbody>
+  <th id="imagen">Imagen</th>
+  <th id="nombre">Nombre</th>
+  <th id="costo">Costo</th>
+  <th id="cantidad">Cantidad</th>
+  <th id="subtotal">Subtotal</th>
+</tbody>
+
+      </table>
+    
+    <h4>Tipo de Envio</h4>
+    <div class="d-flex">
+    <input 
+    type="radio"
+    class="form-check-input me-2"
+    required
+    value="p"
+    name= "btn"/>
+   <p>Premium 2 a 5 dias (15%)</p>
+  </div>
+
+   <div class="d-flex">
+    <input 
+    type="radio"
+    class="form-check-input me-2"
+    required
+    value="p"
+    name= "btn"/>
+   <p>Express 5 a 8 dias (7%)</p>
+  
+
     </div>
+
+    <div class="d-flex mb-5">
+      <input 
+      type="radio"
+      class="form-check-input me-2"
+      required
+      value="p"
+      name= "btn"/>
+     <p>Standard 12 a 15 dias (5%)</p>
+      </div>
+
+<h4>Direccion de envio</h4>
+<div class="d-flex">
+  <div>
+    <label for="calle">Calle</label>
+<div class="input-group">
+    <input type="text" id="calle"
+    class="form-control"/>
+  </div>
+</div>
+<div class="ms-5">
+  <label for="numero">Numero</label>
+<div class="input-group">
+  <input type="text" id="numero"
+  class="form-control"/>
+</div>
+</div>
+    </div>
+    <div 
+    style="width: 15rem"
+    class="mt-4 mb-5">
+      <label for="esquina">Esquina</label>
+    <div 
+    class="input-group">
+      <input
+      type="text" id="esquina"
+      class="form-control"/>
+    </div>
+    </div>
+  </div>
+<hr>
   </main>
   <footer class="text-muted">
     <div class="container">

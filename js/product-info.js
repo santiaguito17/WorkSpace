@@ -4,15 +4,42 @@ const CONTENDEDOR = document.getElementById ("contenedor");
 
 const RELACIONADOS = document.getElementById("relacionados");
 
+let compras = [];
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
       if (resultObj.status === "ok") {
        let productos = resultObj.data;
-  
+  console.log(productos);
+
        mostrarProducto (productos);
        relacionados(productos.relatedProducts);
 
+
+       const BOTON_COMPRAR = document.getElementById ("btn-comprar");
+
+       BOTON_COMPRAR.onclick = () => {
+        if (localStorage.getItem("compras")) {
+          compras = JSON.parse(localStorage.getItem("compras"));
+        }
+        if (compras.some((element) => element.id === productos.id)) {
+          return;
+        } else {
+          let item = {
+            id: productos.id,
+            count: 1,
+            name: productos.name,
+            unitCost: productos.cost,
+            imagen: productos.images[0],
+            currency: productos.currency,
+          };
+          compras.push(item);
+
+          localStorage.setItem("compras", JSON.stringify(compras));
+  
+        }
+      
+       }
       }
     });
   });
@@ -61,8 +88,15 @@ function guardarIdProducto(id) {
 }
 
   function mostrarProducto(obj) {
-  CONTENDEDOR.innerHTML += `
-    <h2> ${obj.name} </h2>
+  CONTENDEDOR.innerHTML += 
+
+`<div class="d-flex justify-content-between">
+      <h2> ${obj.name} </h2>
+        <div id="btn-comprar" 
+          class="btn btn-success me-5 fw-bold p-2     d-flex  align-items-center">
+          Comprar
+        </div>
+    </div>
     <hr>
     <div>
     <span class="fw-bold "> Precio </span>

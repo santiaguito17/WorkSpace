@@ -71,12 +71,9 @@
   </tr>
 </thead>
 
-<tbody>
-  <th id="imagen">Imagen</th>
-  <th id="nombre">Nombre</th>
-  <th id="costo">Costo</th>
-  <th id="cantidad">Cantidad</th>
-  <th id="subtotal">Subtotal</th>
+<tbody id="tabla">
+
+  
 </tbody>
 
       </table>
@@ -84,6 +81,7 @@
     <h4>Tipo de Envio</h4>
     <div class="d-flex">
     <input 
+    id="premium"
     type="radio"
     class="form-check-input me-2"
     required
@@ -94,6 +92,7 @@
 
    <div class="d-flex">
     <input 
+    id="express"
     type="radio"
     class="form-check-input me-2"
     required
@@ -106,6 +105,7 @@
 
     <div class="d-flex mb-5">
       <input 
+      id="standard"
       type="radio"
       class="form-check-input me-2"
       required
@@ -115,6 +115,8 @@
       </div>
 
 <h4>Direccion de envio</h4>
+<form action="#" method="" class="need-validation" novalidate>
+
 <div class="d-flex">
   <div>
     <label for="calle">Calle</label>
@@ -142,8 +144,131 @@
       class="form-control"/>
     </div>
     </div>
-  </div>
+  
 <hr>
+<h4>Costos</h4>
+<ul class="list-group">
+  <li class="list-group-item">
+    <div class="d-flex justify-content-between m-0 p-0">
+      <p>Subtotal</p>
+      <p>USD <span id="subtotal"></span></p>
+    </div>
+    <div>
+      <p>Costo Unitario del producto por cantidad</p>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="d-flex justify-content-between m-0 p-0">
+      <p>Costo envio</p>
+      <p>USD <span id="envio"></span></p>
+    </div>
+    <div>
+      <p>Segun el tipo de envio</p>
+    </div>
+  </li>  <li class="list-group-item">
+    <div class="d-flex justify-content-between m-0 p-0">
+      <p>Total ($)</p>
+      <p>USD <span id="total"></span></p>
+    </div>
+  </li>
+</ul>
+<h4>Forma de Pago</h4>
+<div class="d-flex">
+  <p class="me-2">No ha seleccionado</p>
+  <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Seleccionar</a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+          <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+    <div class="d-flex">
+      <input type="radio" class="form-check-input" name="tipo" value="s"
+      id="btn-tarjeta" checked="">
+      <p>Tarjeta de credito</p>
+    </div>
+<hr>
+<div class="d-flex">
+  <div>
+    <label for="card-input" class="form-label">Numero de tarjeta</label>
+    <div class="input-group">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="input-tarjeta" 
+      style="width: ;15rem" 
+      required>
+    </div>
+    <label for=""></label>
+  </div>
+
+  <div>
+    <label for="card-input" class="form-label">Codigo de seguridad</label>
+    <div class="input-group">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="input-tarjeta" 
+      style="width: ;15rem" 
+      required>
+    </div>
+    <label for=""></label>
+  </div>
+</div>
+<div class="d-flex">
+  <div>
+    <label for="code-input" class="form-label">Vencimiento (MM/AA) </label>
+    <div class="input-group">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="input-vencimiento" 
+      style="width: ;15rem" 
+      required>
+    </div>
+    <label for=""></label>
+  </div>
+</div>
+<div class="d-flex mt-3">
+  <input class="form-check-input" type="radio"
+  name="tipo"
+  value="s"
+  id="btn-tarjeta"
+  checked="">
+  <p>Transferencia</p>
+</div>
+<hr>
+<div>
+  <label for="code-input" class="form-label">Numero de cuenta </label>
+  <div class="input-group">
+    <input 
+    type="text" 
+    class="form-control" 
+    id="input-vencimiento" 
+    style="width: ;15rem" 
+    required>
+  </div>
+  <label for=""></label>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="submit" class="btn btn-primary w-100">Finalizar Compra</button>
+  </div>
+</form>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -155,6 +280,39 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <!-- ALERT SUCCESS -->
+
+  <div
+  class="alert alert-success alert-dismissible fade"
+  role="alert"
+  id="alert-success"
+>
+  <p>Datos guardados correctamente</p>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+
+<!-- ALERT DANGER -->
+
+<div
+class="alert alert-danger alert-dismissible fade"
+role="alert"
+id="alert-danger"
+>
+<p>Los datos ingresados no cumplen con los requisitos solicitados</p>
+<button
+  type="button"
+  class="btn-close"
+  data-bs-dismiss="alert"
+  aria-label="Close"
+></button>
+</div>
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -167,6 +325,32 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/almacenamiento.js"></script>
+  <script>
+
+    (function () {
+      "use strict";
+
+      var forms = document.querySelectorAll(".needs-validation");
+
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+              // showAlertError();
+            } else {
+              // showAlertSuccess();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
 </body>
 
 </html>
